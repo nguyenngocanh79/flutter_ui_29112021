@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Simple Calculator"),
+        title: Text("Simple Calculator 01"),
       ),
       body: SafeArea(
           child: Container(
