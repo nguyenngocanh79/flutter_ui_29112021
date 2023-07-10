@@ -1,5 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ui_29112021/custom_theme.dart';
+import 'package:flutter_ui_29112021/flash/flash_screen.dart';
+import 'package:flutter_ui_29112021/home/drawer_custom.dart';
+import 'package:flutter_ui_29112021/home/home_screen.dart';
+import 'package:flutter_ui_29112021/home/page_route_custom.dart';
+import 'package:flutter_ui_29112021/html_editor.dart';
+import 'package:flutter_ui_29112021/model/token.dart';
+import 'package:flutter_ui_29112021/provider_test.dart';
+import 'package:flutter_ui_29112021/quill_html.dart';
+import 'package:flutter_ui_29112021/scroll_to_index/scroll_to_index.dart';
+import 'package:flutter_ui_29112021/scroll_to_index/scrollable_positioned_list.dart';
+import 'package:flutter_ui_29112021/sign_in/sign_in_screen.dart';
+import 'package:flutter_ui_29112021/sign_up/keyboard_prevent.dart';
+import 'package:flutter_ui_29112021/sign_up/sign_up_screen.dart';
+import 'package:flutter_ui_29112021/tabPage.dart';
+import 'package:flutter_ui_29112021/tabPage02.dart';
+import 'package:flutter_ui_29112021/tabPage03.dart';
+import 'package:flutter_ui_29112021/tabPage04.dart';
+import 'package:flutter_ui_29112021/tabPage05.dart';
+import 'package:flutter_ui_29112021/wrap_test.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -12,12 +34,48 @@ class MyApp extends StatelessWidget {
       onTap: (){
         FocusScope.of(context).requestFocus(new FocusNode());
       },
-      child: MaterialApp(
-        title: "My App",
-        home: HomePage(),
+      child: Provider<String>.value(
+        value: "ABC",
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "My App",
+          // home: HomePage(),
+          home: FlashPage(),
+          // theme: customTheme,
+          theme: ThemeData(
+            brightness: Brightness.light, // Set the default theme to light
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark, // Set the dark theme
+          ),
+          themeMode: ThemeMode.dark,
+          routes: {
+            "/sign_in_screen": (context) => SignInPage(),
+            "/sign_up_screen": (context) => SignUpPage(),
+            "/home_screen": (context) => HomeScreen(),
+          },
+          // onGenerateRoute: (route) => onGenerateRoute(route),
+        ),
       ),
     );
+
   }
+
+  // static Route onGenerateRoute(RouteSettings settings){
+  //   switch(settings.name){
+  //     case '/second':
+  //       return CustomPageRoute(
+  //           child: DrawerPage(),
+  //         direction:
+  //       );
+  //     case '/first':
+  //     default:
+  //     return MaterialPageRoute(
+  //         builder: (context) => SignUpPage(),
+  //         settings: settings
+  //     );
+  //   }
+  // }
 }
 
 class HomePage extends StatefulWidget {
